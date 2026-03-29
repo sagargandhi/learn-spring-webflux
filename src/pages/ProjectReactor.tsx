@@ -299,7 +299,69 @@ export default function ProjectReactor() {
         </div>
       </div>
 
-      {/* ── Section 2: Traditional REST ── */}
+      {/* ── Section 2: Why Mono/Flux ── */}
+      <div className="section" id="why-mono-flux">
+        <h2 className="section-title">What Mono and Flux Mean — and Why We Need Them</h2>
+        <div className="step-content">
+          <p>
+            <strong><code>Mono&lt;T&gt;</code></strong> means: “this operation will eventually produce 0 or 1 item, then complete or fail.”
+            <strong> <code>Flux&lt;T&gt;</code></strong> means: “this operation can produce 0 to many items over time, then complete or fail.”
+          </p>
+          <p>
+            We need these types because plain return types like <code>User</code> and <code>List&lt;User&gt;</code> cannot describe asynchronous
+            timing, stream lifecycle, or flow control. Reactor types make all of that explicit and composable.
+          </p>
+        </div>
+
+        <div className="step-content">
+          <p><strong>Why Flux is required in real systems:</strong></p>
+          <ul>
+            <li>For very large datasets, streaming row-by-row avoids loading everything into heap memory.</li>
+            <li>For live streams (SSE/WebSocket), data keeps arriving over time and may not have a fixed end.</li>
+            <li>For progressive responses, clients can process early items before the full query completes.</li>
+            <li>For high concurrency, non-blocking flow keeps event-loop threads free during I/O waits.</li>
+          </ul>
+        </div>
+
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.88rem' }}>
+          <thead>
+            <tr style={{ background: 'var(--bg3)' }}>
+              <th style={{ padding: '10px 14px', textAlign: 'left', borderBottom: '2px solid var(--border)' }}>Aspect</th>
+              <th style={{ padding: '10px 14px', textAlign: 'left', borderBottom: '2px solid var(--border)' }}>Traditional REST (List&lt;T&gt;)</th>
+              <th style={{ padding: '10px 14px', textAlign: 'left', borderBottom: '2px solid var(--border)' }}>Flux-based REST</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Delivery model', 'All-at-once response after full collection', 'Progressive stream as items arrive'],
+              ['Thread behavior', 'Request thread blocks while waiting on I/O', 'Event-loop continues handling other requests'],
+              ['Memory profile', 'Can spike for large results', 'Bounded buffering with streaming'],
+              ['Backpressure', 'No standard built-in', 'Reactive Streams backpressure-aware'],
+            ].map(([aspect, mvc, flux], i) => (
+              <tr key={i} style={{ borderBottom: '1px solid var(--border)', background: i % 2 === 0 ? 'var(--bg)' : 'var(--bg2)' }}>
+                <td style={{ padding: '9px 14px', fontWeight: 600, color: 'var(--text)' }}>{aspect}</td>
+                <td style={{ padding: '9px 14px', color: 'var(--text2)' }}>{mvc}</td>
+                <td style={{ padding: '9px 14px', color: 'var(--text2)' }}>{flux}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="info-box info">
+          <span className="info-box-icon">💡</span>
+          <div className="info-box-content">
+            <div className="info-box-title">Rule of thumb</div>
+            Use <code>Mono</code> for one result (or completion), and <code>Flux</code> for many results or continuous streams.
+            For a deeper walkthrough, see{' '}
+            <a href="/mono-and-flux-the-core-reactive-types-in-project-reactor">
+              Mono and Flux — The Core Reactive Types in Project Reactor
+            </a>
+            .
+          </div>
+        </div>
+      </div>
+
+      {/* ── Section 3: Traditional REST ── */}
       <div className="section" id="traditional-rest">
         <h2 className="section-title">How a Traditional REST Application Works</h2>
         <div className="step-content">
@@ -329,7 +391,7 @@ export default function ProjectReactor() {
         </p>
       </div>
 
-      {/* ── Section 3: Reactive model ── */}
+      {/* ── Section 4: Reactive model ── */}
       <div className="section" id="reactive-model">
         <h2 className="section-title">How the Reactive Model Works</h2>
         <div className="step-content">
@@ -368,7 +430,7 @@ export default function ProjectReactor() {
         </div>
       </div>
 
-      {/* ── Section 4: Side-by-side comparison ── */}
+      {/* ── Section 5: Side-by-side comparison ── */}
       <div className="section" id="comparison">
         <h2 className="section-title">Side-by-Side Comparison</h2>
         <div className="step-content">
@@ -402,7 +464,7 @@ export default function ProjectReactor() {
         </div>
       </div>
 
-      {/* ── Section 5: Where Reactor fits ── */}
+      {/* ── Section 6: Where Reactor fits ── */}
       <div className="section" id="stack">
         <h2 className="section-title">Where Project Reactor Fits in Your App</h2>
         <div className="step-content">
@@ -420,7 +482,7 @@ export default function ProjectReactor() {
         </p>
       </div>
 
-      {/* ── Section 6: Code comparison ── */}
+      {/* ── Section 7: Code comparison ── */}
       <div className="section" id="code-comparison">
         <h2 className="section-title">Code: MVC vs WebFlux</h2>
         <div className="step-content">
@@ -473,7 +535,7 @@ public class UserController {
         </div>
       </div>
 
-      {/* ── Section 7: When to use / not use ── */}
+      {/* ── Section 8: When to use / not use ── */}
       <div className="section" id="when-to-use">
         <h2 className="section-title">When Should You Use Project Reactor / WebFlux?</h2>
         <div className="step-content">
@@ -495,7 +557,7 @@ public class UserController {
         </div>
       </div>
 
-      {/* ── Section 8: Summary ── */}
+      {/* ── Section 9: Summary ── */}
       <div className="section" id="summary">
         <h2 className="section-title">Summary</h2>
         <div className="step-content">
