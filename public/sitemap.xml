@@ -34,6 +34,11 @@
 
   <!-- Core Concepts -->
   <url>
+    <loc>https://learnspringwebflux.com/what-is-project-reactor-and-how-it-differs-from-traditional-rest</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://learnspringwebflux.com/mono-and-flux-the-core-types-of-project-reactor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

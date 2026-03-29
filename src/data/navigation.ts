@@ -22,6 +22,7 @@ export const navSections: NavSection[] = [
   {
     title: 'Core Concepts',
     items: [
+      { label: 'What is Project Reactor?', path: '/what-is-project-reactor-and-how-it-differs-from-traditional-rest' },
       { label: 'Mono and Flux Explained', path: '/mono-and-flux-the-core-reactive-types-in-project-reactor' },
       { label: 'Reactive Operators Deep Dive', path: '/reactive-operators-map-flatmap-filter-zip-and-more' },
       { label: 'Schedulers and Threading Model', path: '/schedulers-and-the-threading-model-in-spring-webflux' },

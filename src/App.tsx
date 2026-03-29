@@ -10,6 +10,7 @@ import SettingUpFirstProject from './pages/SettingUpFirstProject';
 import UnderstandingProjectStructure from './pages/UnderstandingProjectStructure';
 
 // Pages — Core Concepts
+import ProjectReactor from './pages/ProjectReactor';
 import MonoAndFlux from './pages/MonoAndFlux';
 import ReactiveOperators from './pages/ReactiveOperators';
 import SchedulersAndThreading from './pages/SchedulersAndThreading';
@@ -62,6 +63,7 @@ export default function App() {
         <Route path="/understanding-spring-webflux-project-structure-and-key-files" element={<UnderstandingProjectStructure />} />
 
         {/* Core Concepts */}
+        <Route path="/what-is-project-reactor-and-how-it-differs-from-traditional-rest" element={<ProjectReactor />} />
         <Route path="/mono-and-flux-the-core-reactive-types-in-project-reactor" element={<MonoAndFlux />} />
         <Route path="/reactive-operators-map-flatmap-filter-zip-and-more" element={<ReactiveOperators />} />
         <Route path="/schedulers-and-the-threading-model-in-spring-webflux" element={<SchedulersAndThreading />} />
